@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/database.dart';
+import 'package:myapp/screens/user/user_akun.dart';
+import 'package:myapp/screens/user/user_berita.dart';
+import 'package:myapp/screens/user/user_konsultasi.dart';
 import 'package:myapp/services/database_service.dart';
 import 'package:myapp/screens/user/user_dashboard.dart';
 
@@ -94,7 +97,7 @@ class ValidasiPermohonanRt extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ValidasiPermohonanRt()));
+                    MaterialPageRoute(builder: (context) => UserKonsultasi()));
               },
             ),
             label: ' ',
@@ -120,7 +123,7 @@ class ValidasiPermohonanRt extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ValidasiPermohonanRt()));
+                    MaterialPageRoute(builder: (context) => UserBerita()));
               },
             ),
             label: ' ',
@@ -132,6 +135,8 @@ class ValidasiPermohonanRt extends StatelessWidget {
                 color: Color.fromARGB(255, 153, 151, 151),
               ),
               onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserAkun()));
               },
             ),
             label: ' ',

@@ -155,7 +155,7 @@ class AdminDashboard extends StatelessWidget {
             icon: IconButton(
               icon: const Icon(
                 Icons.home,
-                color: Colors.red,
+                color: const Color.fromARGB(255, 139, 32, 24),
               ),
               onPressed: () {
                 Navigator.push(context,

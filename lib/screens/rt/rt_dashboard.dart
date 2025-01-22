@@ -8,6 +8,7 @@ import 'package:myapp/screens/user/user_kehilangan.dart';
 import 'package:myapp/screens/user/user_ketskck.dart';
 import 'package:myapp/screens/user/user_kia.dart';
 import 'package:myapp/screens/user/user_kk.dart';
+import 'package:myapp/screens/user/user_konsultasi.dart';
 import 'package:myapp/screens/user/user_ktp.dart';
 import 'package:myapp/screens/user/user_sktmkes.dart';
 import 'package:myapp/screens/user/user_sktmpen.dart';
@@ -181,7 +182,7 @@ class RtDashboard extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RtDashboard()));
+                    MaterialPageRoute(builder: (context) => UserKonsultasi()));
               },
             ),
             label: ' ',

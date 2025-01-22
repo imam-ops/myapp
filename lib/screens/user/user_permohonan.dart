@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/database.dart';
+import 'package:myapp/screens/user/user_akun.dart';
+import 'package:myapp/screens/user/user_berita.dart';
+import 'package:myapp/screens/user/user_cetak.dart';
+import 'package:myapp/screens/user/user_konsultasi.dart';
 import 'package:myapp/screens/user/user_update.dart';
 import 'package:myapp/services/database_service.dart';
 import 'package:myapp/screens/user/user_dashboard.dart';
@@ -21,6 +25,13 @@ class UserPermohonan extends StatelessWidget {
           },
         ),
         actions: [
+          IconButton(
+            icon: Icon(Icons.print),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => UserCetak()));
+            },
+          ),
           IconButton(
             icon: Icon(Icons.account_circle),
             onPressed: () {
@@ -95,17 +106,15 @@ class UserPermohonan extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => UserPermohonan()));
+                    MaterialPageRoute(builder: (context) => UserKonsultasi()));
               },
             ),
             label: ' ',
           ),
           BottomNavigationBarItem(
             icon: IconButton(
-              icon: const Icon(
-                Icons.home,
-                color: Color.fromARGB(255, 153, 151, 151)
-              ),
+              icon: const Icon(Icons.home,
+                  color: Color.fromARGB(255, 153, 151, 151)),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => UserDashboard()));
@@ -121,7 +130,7 @@ class UserPermohonan extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => UserPermohonan()));
+                    MaterialPageRoute(builder: (context) => UserBerita()));
               },
             ),
             label: ' ',
@@ -133,6 +142,8 @@ class UserPermohonan extends StatelessWidget {
                 color: Color.fromARGB(255, 153, 151, 151),
               ),
               onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserAkun()));
               },
             ),
             label: ' ',
@@ -184,10 +195,12 @@ class PermohonanItem extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => UserUpdate(id: id)),
+                      MaterialPageRoute(
+                          builder: (context) => UserUpdate(id: id)),
                     );
                   },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.green),
                   child: Text('Edit'),
                 ),
                 ElevatedButton(
@@ -208,7 +221,6 @@ class PermohonanItem extends StatelessWidget {
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   child: Text('Hapus'),
                 ),
-                
               ],
             ),
           ],

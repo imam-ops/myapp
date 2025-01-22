@@ -55,13 +55,6 @@ class AdminKonsultasi extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Handle the FAB press
-        },
-        child: Icon(Icons.add),
-        backgroundColor: const Color.fromARGB(255, 139, 32, 24),
-      ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(

@@ -1,23 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/berita.dart';
 import 'package:myapp/screens/admin/berita_detail.dart';
+import 'package:myapp/screens/user/user_akun.dart';
+import 'package:myapp/screens/user/user_dashboard.dart';
+import 'package:myapp/screens/user/user_konsultasi.dart';
+import 'package:myapp/screens/user/user_permohonan.dart';
 import 'package:myapp/services/berita_service.dart';
 
-class UserBerita extends StatelessWidget {
+class UserBerita extends StatefulWidget {
+  @override
+  _UserBeritaState createState() => _UserBeritaState();
+}
+
+class _UserBeritaState extends State<UserBerita> {
   final BeritaService _beritaService = BeritaService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Berita'),
+        title: Text("Berita"),
+        backgroundColor: const Color.fromARGB(255, 139, 32, 24),
+        foregroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () {
+              // Handle phone button press
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 10),
             Expanded(
               child: StreamBuilder<List<BeritaModel>>(
                 stream: _beritaService.getBeritaList('Berita'),
@@ -34,17 +58,25 @@ class UserBerita extends StatelessWidget {
                       itemCount: dataList.length,
                       itemBuilder: (context, index) {
                         BeritaModel data = dataList[index];
-                        return ListTile(
-                          title: Text(data.judul),
-                          subtitle: Text(data.subtitle),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BeritaDetail(berita: data),
-                              ),
-                            );
-                          },
+                        return Container(
+                          margin: EdgeInsets.symmetric(vertical: 8.0),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: ListTile(
+                            title: Text(data.judul),
+                            subtitle: Text(data.subtitle),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      BeritaDetail(berita: data),
+                                ),
+                              );
+                            },
+                          ),
                         );
                       },
                     );
@@ -56,7 +88,7 @@ class UserBerita extends StatelessWidget {
                   }
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -66,13 +98,14 @@ class UserBerita extends StatelessWidget {
             icon: IconButton(
               icon: const Icon(
                 Icons.list,
-                color: Colors.red,
+                color: Color.fromARGB(255, 153, 151, 151),
               ),
               onPressed: () {
-               
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserPermohonan()));
               },
             ),
-            label: ' ',
+            label: '',
           ),
           BottomNavigationBarItem(
             icon: IconButton(
@@ -81,34 +114,37 @@ class UserBerita extends StatelessWidget {
                 color: Color.fromARGB(255, 153, 151, 151),
               ),
               onPressed: () {
-               
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserKonsultasi()));
               },
             ),
-            label: ' ',
+            label: '',
           ),
           BottomNavigationBarItem(
             icon: IconButton(
               icon: const Icon(
                 Icons.home,
-                color: Color.fromARGB(255, 153, 151, 151)
+                color: Color.fromARGB(255, 153, 151, 151),
               ),
               onPressed: () {
-              
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserDashboard()));
               },
             ),
-            label: ' ',
+            label: '',
           ),
           BottomNavigationBarItem(
             icon: IconButton(
               icon: const Icon(
                 Icons.newspaper_rounded,
-                color: Color.fromARGB(255, 153, 151, 151),
+                color: const Color.fromARGB(255, 139, 32, 24),
               ),
               onPressed: () {
-
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserBerita()));
               },
             ),
-            label: ' ',
+            label: '',
           ),
           BottomNavigationBarItem(
             icon: IconButton(
@@ -117,10 +153,11 @@ class UserBerita extends StatelessWidget {
                 color: Color.fromARGB(255, 153, 151, 151),
               ),
               onPressed: () {
-              
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserAkun()));
               },
             ),
-            label: ' ',
+            label: '',
           ),
         ],
       ),

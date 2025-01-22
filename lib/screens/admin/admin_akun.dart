@@ -32,15 +32,6 @@ class AdminAkun extends StatelessWidget {
               backgroundImage: AssetImage(
                   'assets/profile_picture.png'), // Replace with your image asset
             ),
-            const SizedBox(height: 16),
-            const Text(
-              'Mahesa Putra',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const Text(
-              'COO|Tetap',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-            ),
             const SizedBox(height: 32),
             ListTile(
               leading: const Icon(Icons.lock),

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/auth/login_screen.dart';
+import 'package:myapp/screens/user/user_berita.dart';
+import 'package:myapp/screens/user/user_dashboard.dart';
+import 'package:myapp/screens/user/user_konsultasi.dart';
+import 'package:myapp/screens/user/user_permohonan.dart';
 import 'package:myapp/services/auth_service.dart';
 
 class UserAkun extends StatelessWidget {
@@ -9,7 +13,15 @@ class UserAkun extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pengaturan Akun'),
+        title: Text("Akun"),
+        backgroundColor: const Color.fromARGB(255, 139, 32, 24),
+        foregroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -19,15 +31,6 @@ class UserAkun extends StatelessWidget {
               radius: 50,
               backgroundImage: AssetImage(
                   'assets/profile_picture.png'), // Replace with your image asset
-            ),
-            const SizedBox(height: 16),
-            const Text(
-              'Mahesa Putra',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const Text(
-              'COO|Tetap',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
             const SizedBox(height: 32),
             ListTile(
@@ -57,6 +60,75 @@ class UserAkun extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(
+                Icons.list,
+                color: Color.fromARGB(255, 153, 151, 151),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserPermohonan()));
+              },
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(
+                Icons.chat,
+                color: Color.fromARGB(255, 153, 151, 151),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserKonsultasi()));
+              },
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(
+                Icons.home,
+                color: Color.fromARGB(255, 153, 151, 151),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserDashboard()));
+              },
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(
+                Icons.newspaper_rounded,
+                color: Color.fromARGB(255, 153, 151, 151),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserBerita()));
+              },
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: const Icon(
+                Icons.account_box,
+                color: const Color.fromARGB(255, 139, 32, 24),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserAkun()));
+              },
+            ),
+            label: '',
+          ),
+        ],
       ),
     );
   }

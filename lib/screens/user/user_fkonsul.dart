@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/admin/admin_konsultasi.dart';
 
-class AdminFkonsul extends StatelessWidget {
+class UserFkonsul extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

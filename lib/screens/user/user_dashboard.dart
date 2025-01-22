@@ -7,6 +7,7 @@ import 'package:myapp/screens/user/user_kehilangan.dart';
 import 'package:myapp/screens/user/user_ketskck.dart';
 import 'package:myapp/screens/user/user_kia.dart';
 import 'package:myapp/screens/user/user_kk.dart';
+import 'package:myapp/screens/user/user_konsultasi.dart';
 import 'package:myapp/screens/user/user_ktp.dart';
 import 'package:myapp/screens/user/user_permohonan.dart';
 import 'package:myapp/screens/user/user_sktmkes.dart';
@@ -182,7 +183,7 @@ class UserDashboard extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => UserDashboard()));
+                    MaterialPageRoute(builder: (context) => UserKonsultasi()));
               },
             ),
             label: ' ',

@@ -12,6 +12,7 @@ class PermohonanDetail extends StatelessWidget {
       appBar: AppBar(
         title: Text(permohonan.nama),
         backgroundColor: const Color.fromARGB(255, 139, 32, 24),
+        foregroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
