@@ -15,6 +15,7 @@ import '../../services/auth_service.dart';
 
 class UserDashboard extends StatelessWidget {
   final AuthService _authService = AuthService();
+  
 
   UserDashboard({super.key});
   @override

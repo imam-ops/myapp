@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/database.dart';
 
-class PermohonanDetail extends StatelessWidget {
+class Dokumen extends StatelessWidget {
   final DatabaseModel permohonan;
 
-  const PermohonanDetail({super.key, required this.permohonan});
+  const Dokumen({super.key, required this.permohonan});
 
   @override
   Widget build(BuildContext context) {

@@ -11,7 +11,7 @@ class UserPermohonan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Kartu Keluarga"),
+        title: Text("Permohonan"),
         backgroundColor: const Color.fromARGB(255, 139, 32, 24),
         foregroundColor: Colors.white,
         leading: IconButton(
@@ -208,6 +208,7 @@ class PermohonanItem extends StatelessWidget {
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   child: Text('Hapus'),
                 ),
+                
               ],
             ),
           ],

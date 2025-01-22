@@ -9,7 +9,6 @@ class DatabaseService {
       CollectionReference collection = _firestore.collection(collectionName);
       DocumentReference docRef = await collection.add(user.toMap());
       print('Berhasil mendaftar ke koleksi $collectionName dengan ID: ${docRef.id}');
-      // Update the model with the new id
       user = DatabaseModel(
         id: docRef.id,
         nikpemohon: user.nikpemohon,

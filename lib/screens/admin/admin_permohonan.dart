@@ -4,8 +4,10 @@ import 'package:myapp/screens/admin/admin_akun.dart';
 import 'package:myapp/screens/admin/admin_berita.dart';
 import 'package:myapp/screens/admin/admin_dashboard.dart';
 import 'package:myapp/screens/admin/admin_konsultasi.dart';
+import 'package:myapp/screens/admin/admin_upload.dart';
 import 'package:myapp/screens/admin/berita_detail.dart';
 import 'package:myapp/screens/admin/detail_permohonan.dart';
+import 'package:myapp/screens/admin/halaman_batalkan.dart';
 import 'package:myapp/services/database_service.dart';
 
 class AdminPermohonan extends StatelessWidget {
@@ -130,7 +132,7 @@ class AdminPermohonan extends StatelessWidget {
       ),
     );
   }
-}
+} 
 
 class PermohonanItem extends StatelessWidget {
   final DatabaseModel data;
@@ -157,6 +159,20 @@ class PermohonanItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AdminUpload(databaseModel: data),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blueAccent,
+                      foregroundColor: Colors.white),
+                  child: Text('Upload'),
+                ),
                 ElevatedButton(
                   onPressed: () async {
                     try {
@@ -191,14 +207,33 @@ class PermohonanItem extends StatelessWidget {
                   child: Text('Detail'),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    // Handle hapus button press
+                  onPressed: () async {
+                    final status = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AdminBatal(),
+                      ),
+                    );
+
+                    if (status != null && status.isNotEmpty) {
+                      try {
+                        await database.updateStatus(data.id, status);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Status telah diperbarui')),
+                        );
+                      } catch (error) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Gagal memperbarui status: $error')),
+                        );
+                      }
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white),
                   child: Text('Batal'),
                 ),
+                
               ],
             ),
           ],
@@ -207,3 +242,4 @@ class PermohonanItem extends StatelessWidget {
     );
   }
 }
+
